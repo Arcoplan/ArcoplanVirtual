@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class JDBCConection {
+public class JDBCConnection {
 	
 	
-	public Connection getConection(){
+	public Connection getConnection(){
 		Connection con = null;
 		
 		try{

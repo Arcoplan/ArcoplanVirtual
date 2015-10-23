@@ -9,7 +9,7 @@ public class ConnectionFactory {
 		
 		try
 		{
-			Connection connection = new JDBCConection().getConection();
+			Connection connection = new JDBCConnection().getConnection();
 			connection.close();
 			System.out.println("desconected database!");
 		}
