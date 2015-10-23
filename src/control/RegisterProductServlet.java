@@ -27,16 +27,18 @@ public class RegisterProductServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doGet sendo chamado");
 		doService(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPost sendo chamado");
 		doService(request, response);
 	}
 
 	private void doService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("doService chamado");
 		String name = request.getParameter("name");
 	    String svalue = request.getParameter("value");
 	    String description = request.getParameter("description");
