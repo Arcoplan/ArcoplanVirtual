@@ -98,5 +98,4 @@ public class ProductDao extends ConnectionFactory{
 			e.printStackTrace();
 		}
 	}
-		
 }
