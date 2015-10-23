@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.Product;
 
-public class ProductDao extends JDBCConnection{
+public class ProductDao extends ConnectionFactory{
 
 	Product product = new Product();
 	

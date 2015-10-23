@@ -1,31 +1,21 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JDBCConnection {
-	
-	
-	public Connection getConnection(){
-		Connection con = null;
+
+	public static void main(String[] args) {
 		
-		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("Conecting database");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/arcoplan","root","ideas");
-	
+		try
+		{
+			Connection connection = new ConnectionFactory().getConnection();
+			connection.close();
+			System.out.println("desconected database!");
 		}
-		
 		catch(SQLException e)
 		{
-			System.out.println("Problem database conecting"+e);
+			e.printStackTrace();
 		}
-		catch(ClassNotFoundException cf)
-		{
-			cf.printStackTrace();
-		}
-		
-		return con;
 	}
 }
