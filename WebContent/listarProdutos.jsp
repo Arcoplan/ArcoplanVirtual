@@ -22,7 +22,7 @@
 				<td>${prududuto.getValue()}</td>
 				<td>${prududuto.getDescription}</td>
 				<td>${prududuto.getManufacturingDate()}</td>
-				<td></td>
+				<td><a hef="DeleteProduct?ID=${produto.ID}">Deletar</a></td>
 			</tr>
 		</c:ForEach>
 	</table>

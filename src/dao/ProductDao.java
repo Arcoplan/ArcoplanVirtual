@@ -47,6 +47,7 @@ public class ProductDao extends ConnectionFactory{
 			while(rs.next())
 			{
 				Product product = new Product();
+				product.setID(rs.getString("idproduto"));
 				product.setName(rs.getString("name"));
 				product.setValue(rs.getDouble("value"));
 				product.setDescription(rs.getString("description"));
