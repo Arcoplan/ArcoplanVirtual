@@ -17,6 +17,7 @@
 			<th>Descrição</th>
 			<th>Data de Fabricação</th>
 			<th></th>
+			<th></th>
 		</tr>
 		<c:forEach var="produto" items="${produtos}">
 			<tr>
@@ -25,6 +26,7 @@
 				<td>${produto.description}</td>
 				<td>${produto.manufacturingDate}</td>
 				<td><a href="javascript:func()" onclick="confirmacao(${produto.ID})">Deletar</a></td>
+				<td><a href="UpdateProduct?ID=${produto.ID}">Alterar</a></td>
 			</tr>
 		</c:forEach>
 	</table>
