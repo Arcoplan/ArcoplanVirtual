@@ -4,6 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="Assets/js/mensagemDeConfirmacao.js"></script>
+<link href= "Assets/css/bootstrap.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Produtos</title>
 </head>
@@ -22,7 +24,7 @@
 				<td>${produto.value}</td>
 				<td>${produto.description}</td>
 				<td>${produto.manufacturingDate}</td>
-				<td><a href="DeleteProduct?ID=${produto.ID}">Deletar</a></td>
+				<td><a href="javascript:func()" onclick="confirmacao(${produto.ID})">Deletar</a></td>
 			</tr>
 		</c:forEach>
 	</table>

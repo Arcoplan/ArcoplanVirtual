@@ -66,7 +66,7 @@ public class ProductDao extends ConnectionFactory{
 		try
 		{
 			Connection connection = getConnection();
-			PreparedStatement pstm = connection.prepareStatement("Delete from product where id ="+id);
+			PreparedStatement pstm = connection.prepareStatement("Delete from product where idproduto = "+id);
 			
 			pstm.execute();
 			pstm.close();
