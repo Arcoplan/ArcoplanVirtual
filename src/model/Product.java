@@ -8,7 +8,7 @@ public class Product {
 	private double value;
 	private String description;
 	private Date manufacturingDate;
-	private String ID;
+	private String id;
 	
 	public Product(String name, double value, String description, Date manufacturingDate) {
 		super();
@@ -41,14 +41,6 @@ public class Product {
 		return description;
 	}
 
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
-	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -59,6 +51,14 @@ public class Product {
 
 	public void setManufacturingDate(Date manufacturingDate) {
 		this.manufacturingDate = manufacturingDate;
+	}
+	
+	public String getID() {
+		return id;
+	}
+
+	public void setID(String id) {
+		this.id = id;
 	}
 	
 	

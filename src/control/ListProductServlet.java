@@ -16,20 +16,32 @@ import model.Product;
 @WebServlet("/ListProduct")
 public class ListProductServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	
+	public ListProductServlet() {
+	        super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		doService(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDao productDao = new ProductDao();
-		List<Product> products =productDao.listProducts();
-		request.setAttribute("produtos", products);
-		
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("listarProdutos.jsp");
-		rd.forward(request, response);
-		 
+		doService(request, response);
+	}
+	
+	private void doService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try{
+			ProductDao productDao = new ProductDao();
+			List<Product> products = productDao.listProducts();
+			request.setAttribute("produtos", products);
+			
+			RequestDispatcher rd;
+			rd = request.getRequestDispatcher("listarProdutos.jsp");
+			rd.forward(request, response);
+		}
+		catch (Exception e){ 
+			throw new ServletException(e);
+		}
 	}
 }

@@ -38,7 +38,7 @@ public class ProductDao extends ConnectionFactory{
 	}
 	
 	public List<Product> listProducts(){
-		List<Product> list = new ArrayList<>();
+		List<Product> list = new ArrayList<Product>();
 		try
 		{
 			Connection connection = getConnection();
