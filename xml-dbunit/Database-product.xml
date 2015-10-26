@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+	
+	<product idproduto = '0001' name = 'product1' value = '10.00' description = 'description1' manufacturingDate = '01/01/2015' />
+	<product idproduto = '0002' name = 'product1' value = '11.00' description = 'description2' manufacturingDate = '01/12/2015' />
+	
+</dataset>
