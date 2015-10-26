@@ -52,7 +52,7 @@ public class RegisterProductServlet extends HttpServlet {
 			productDao.createProduct(product);
 		
 			RequestDispatcher rd;
-			rd = request.getRequestDispatcher("index.html");
+			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 			
 		}

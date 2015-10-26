@@ -46,9 +46,9 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`product` (
   `value` INT NULL,
   `description` VARCHAR(255) NULL,
   `manufacturingDate` DATE NULL,
-  `environment_idenvironment` INT NOT NULL,
-  `environment_catalog_idcatalog` INT NOT NULL,
-  PRIMARY KEY (`idproduto`, `environment_idenvironment`, `environment_catalog_idcatalog`),
+  `environment_idenvironment` INT NULL,
+  `environment_catalog_idcatalog` INT NULL,
+  PRIMARY KEY (`idproduto`),
   INDEX `fk_product_environment1_idx` (`environment_idenvironment` ASC, `environment_catalog_idcatalog` ASC),
   CONSTRAINT `fk_product_environment1`
     FOREIGN KEY (`environment_idenvironment` , `environment_catalog_idcatalog`)

@@ -69,7 +69,7 @@ public class UpdateProductServlet extends HttpServlet {
 			productDao.updateProduct(product, productId);
 			
 			RequestDispatcher rd;
-			rd = request.getRequestDispatcher("index.html");
+			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}
 		catch (Exception e){
