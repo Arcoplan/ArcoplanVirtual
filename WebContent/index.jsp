@@ -47,7 +47,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-brand-centered">
       <ul class="nav navbar-nav">
-        <li><a href="cadastrarProduto.jsp">Cadastrar Produto</a></li>
+        <li><a href="RegisterProduct">Cadastrar Produto</a></li>
         <li><a href="ListProduct">Listar produtos</a></li>
         <li><a href="#">Link</a></li>
       </ul>

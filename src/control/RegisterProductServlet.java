@@ -26,7 +26,10 @@ public class RegisterProductServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doService(request, response);
+		request.setAttribute("produto", "");
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("cadastrarProduto.jsp");
+		rd.forward(request, response);
 	}
 
 	
