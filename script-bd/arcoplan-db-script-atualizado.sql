@@ -2,9 +2,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
--- -----------------------------------------------------
--- Schema arcoplan
--- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `arcoplan` ;
 CREATE SCHEMA IF NOT EXISTS `arcoplan` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `arcoplan` ;
@@ -26,11 +23,11 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`environment` (
   `idenvironment` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `descriptionEnvironment` VARCHAR(45) NULL,
-  `catalog_idcatalog` INT NOT NULL,
-  PRIMARY KEY (`idenvironment`, `catalog_idcatalog`),
-  INDEX `fk_environment_catalog1_idx` (`catalog_idcatalog` ASC),
+  `catalog_idcatalog1` INT NULL,
+  PRIMARY KEY (`idenvironment`),
+  INDEX `fk_environment_catalog1_idx` (`catalog_idcatalog1` ASC),
   CONSTRAINT `fk_environment_catalog1`
-    FOREIGN KEY (`catalog_idcatalog`)
+    FOREIGN KEY (`catalog_idcatalog1`)
     REFERENCES `arcoplan`.`catalog` (`idcatalog`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -47,12 +44,11 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`product` (
   `description` VARCHAR(255) NULL,
   `manufacturingDate` DATE NULL,
   `environment_idenvironment` INT NULL,
-  `environment_catalog_idcatalog` INT NULL,
   PRIMARY KEY (`idproduto`),
-  INDEX `fk_product_environment1_idx` (`environment_idenvironment` ASC, `environment_catalog_idcatalog` ASC),
+  INDEX `fk_product_environment1_idx` (`environment_idenvironment` ASC),
   CONSTRAINT `fk_product_environment1`
-    FOREIGN KEY (`environment_idenvironment` , `environment_catalog_idcatalog`)
-    REFERENCES `arcoplan`.`environment` (`idenvironment` , `catalog_idcatalog`)
+    FOREIGN KEY (`environment_idenvironment`)
+    REFERENCES `arcoplan`.`environment` (`idenvironment`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -65,14 +61,31 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`environment` (
   `idenvironment` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `descriptionEnvironment` VARCHAR(45) NULL,
-  `catalog_idcatalog` INT NOT NULL,
-  PRIMARY KEY (`idenvironment`, `catalog_idcatalog`),
-  INDEX `fk_environment_catalog1_idx` (`catalog_idcatalog` ASC),
+  `catalog_idcatalog1` INT NULL,
+  PRIMARY KEY (`idenvironment`),
+  INDEX `fk_environment_catalog1_idx` (`catalog_idcatalog1` ASC),
   CONSTRAINT `fk_environment_catalog1`
-    FOREIGN KEY (`catalog_idcatalog`)
+    FOREIGN KEY (`catalog_idcatalog1`)
     REFERENCES `arcoplan`.`catalog` (`idcatalog`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `arcoplan`.`contact`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `arcoplan`.`contact` (
+  `idcontact` INT NOT NULL AUTO_INCREMENT,
+  `emailContact` VARCHAR(45) NOT NULL,
+  `phoneContact` VARCHAR(45) NOT NULL,
+  `typeAddressContact` VARCHAR(45) NOT NULL,
+  `streetAddressContact` VARCHAR(45) NOT NULL,
+  `numberAddressContact` VARCHAR(45) NOT NULL,
+  `cepAddressContact` VARCHAR(45) NOT NULL,
+  `cityAddressContact` VARCHAR(45) NOT NULL,
+  `stateAddressContact` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idcontact`))
 ENGINE = InnoDB;
 
 
@@ -84,27 +97,13 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`juridicalClient` (
   `nameJuridicalClient` VARCHAR(45) NOT NULL,
   `ageJuridicalClient` INT NULL,
   `cnpjJuridicalClient` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idclient`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `arcoplan`.`contact`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `arcoplan`.`contact` (
-  `idcontact` INT NOT NULL AUTO_INCREMENT,
-  `emailContact` VARCHAR(45) NOT NULL,
-  `phoneContact` VARCHAR(45) NOT NULL,
-  `typeAddressContact` VARCHAR(45) NULL,
-  `streetAddressContact` VARCHAR(45) NULL,
-  `numberAddressContact` VARCHAR(45) NULL,
-  `cepAddressContact` VARCHAR(45) NULL,
-  `juridicalClient_idclient` INT NOT NULL,
-  PRIMARY KEY (`idcontact`, `juridicalClient_idclient`),
-  INDEX `fk_contact_juridicalClient1_idx` (`juridicalClient_idclient` ASC),
-  CONSTRAINT `fk_contact_juridicalClient1`
-    FOREIGN KEY (`juridicalClient_idclient`)
-    REFERENCES `arcoplan`.`juridicalClient` (`idclient`)
+  `genderJuridicalClient` CHAR NULL,
+  `contact_idcontact` INT NOT NULL,
+  PRIMARY KEY (`idclient`, `contact_idcontact`),
+  INDEX `fk_juridicalClient_contact1_idx` (`contact_idcontact` ASC),
+  CONSTRAINT `fk_juridicalClient_contact1`
+    FOREIGN KEY (`contact_idcontact`)
+    REFERENCES `arcoplan`.`contact` (`idcontact`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -120,12 +119,11 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`physicalClient` (
   `genderPhysicalClient` VARCHAR(45) NOT NULL,
   `cpfPhysicalClient` VARCHAR(45) NOT NULL,
   `contact_idcontact` INT NOT NULL,
-  `contact_juridicalClient_idclient` INT NOT NULL,
-  PRIMARY KEY (`idclient`, `contact_idcontact`, `contact_juridicalClient_idclient`),
-  INDEX `fk_physicalClient_contact1_idx` (`contact_idcontact` ASC, `contact_juridicalClient_idclient` ASC),
+  PRIMARY KEY (`idclient`, `contact_idcontact`),
+  INDEX `fk_physicalClient_contact1_idx` (`contact_idcontact` ASC),
   CONSTRAINT `fk_physicalClient_contact1`
-    FOREIGN KEY (`contact_idcontact` , `contact_juridicalClient_idclient`)
-    REFERENCES `arcoplan`.`contact` (`idcontact` , `juridicalClient_idclient`)
+    FOREIGN KEY (`contact_idcontact`)
+    REFERENCES `arcoplan`.`contact` (`idcontact`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -136,8 +134,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `arcoplan`.`service` (
   `idservice` INT NOT NULL AUTO_INCREMENT,
-  `servicecol` VARCHAR(45) NULL,
-  `client_idclient` INT NOT NULL,
+  `typeService` VARCHAR(45) NULL,
   `catalog_idcatalog1` INT NOT NULL,
   `juridicalClient_idclient1` INT NOT NULL,
   `physicalClient_idclient1` INT NOT NULL,
