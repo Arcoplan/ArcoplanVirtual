@@ -2,7 +2,7 @@ package model;
 
 public class Client {
 	
-	//private Contact contact;
+	private Contact contact;
 	
 	private String name;
 	private int age;
@@ -10,7 +10,7 @@ public class Client {
 		
 	public Client(Contact contact, String name, int age, char gender) {
 		super();
-	//	this.contact = contact;
+	    this.contact = contact;
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
@@ -19,12 +19,13 @@ public class Client {
 	public Client(){
 	}
 	
-	// private Contact getContact() {
-	//	return contact; 
-	//}
-	//private Contact setContact(Contact contact) {
-	//	this.contact = contact;
-	//}
+	public Contact getContact() {
+		return contact; 
+	}
+	
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
 	
 	public String getName() {
 		return name;

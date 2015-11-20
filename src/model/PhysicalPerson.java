@@ -1,6 +1,6 @@
 package model;
 
-public class PhysicalPerson {
+public class PhysicalPerson extends Client{
 	
 	private int cpf;
 
@@ -9,6 +9,10 @@ public class PhysicalPerson {
 		this.cpf = cpf;
 	}
 
+	public PhysicalPerson(Contact contact, String name, int age, char gender) {
+		super(contact, name, age, gender);
+	}
+	
 	public int getCpf() {
 		return cpf;
 	}
