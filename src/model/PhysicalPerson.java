@@ -4,12 +4,11 @@ public class PhysicalPerson extends Client{
 	
 	private int cpf;
 
-	public PhysicalPerson(int cpf) {
+	public PhysicalPerson() {
 		super();
-		this.cpf = cpf;
 	}
 
-	public PhysicalPerson(Contact contact, String name, int age, char gender) {
+	public PhysicalPerson(Contact contact, String name, int age, String gender) {
 		super(contact, name, age, gender);
 	}
 	

@@ -6,9 +6,9 @@ public class Client {
 	
 	private String name;
 	private int age;
-	private char gender;
+	private String gender;
 		
-	public Client(Contact contact, String name, int age, char gender) {
+	public Client(Contact contact, String name, int age, String gender) {
 		super();
 	    this.contact = contact;
 		this.name = name;
@@ -39,10 +39,10 @@ public class Client {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 }
