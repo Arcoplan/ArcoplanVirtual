@@ -24,6 +24,8 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`environment` (
   `name` VARCHAR(45) NOT NULL,
   `descriptionEnvironment` VARCHAR(45) NULL,
   `catalog_idcatalog1` INT NULL,
+  `valueEnvironment` DOUBLE NULL,
+  `manufacturingDateEnvironment` DATE NULL,
   PRIMARY KEY (`idenvironment`),
   INDEX `fk_environment_catalog1_idx` (`catalog_idcatalog1` ASC),
   CONSTRAINT `fk_environment_catalog1`
@@ -40,10 +42,16 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `arcoplan`.`product` (
   `idproduto` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `value` INT NULL,
+  `value` DOUBLE NULL,
   `description` VARCHAR(255) NULL,
   `manufacturingDate` DATE NULL,
   `environment_idenvironment` INT NULL,
+  `brand` VARCHAR(45) NULL,
+  `color` VARCHAR(45) NULL,
+  `class` CHAR NULL,
+  `height` DOUBLE NULL,
+  `width` DOUBLE NULL,
+  `depth` DOUBLE NULL,
   PRIMARY KEY (`idproduto`),
   INDEX `fk_product_environment1_idx` (`environment_idenvironment` ASC),
   CONSTRAINT `fk_product_environment1`
@@ -62,6 +70,8 @@ CREATE TABLE IF NOT EXISTS `arcoplan`.`environment` (
   `name` VARCHAR(45) NOT NULL,
   `descriptionEnvironment` VARCHAR(45) NULL,
   `catalog_idcatalog1` INT NULL,
+  `valueEnvironment` DOUBLE NULL,
+  `manufacturingDateEnvironment` DATE NULL,
   PRIMARY KEY (`idenvironment`),
   INDEX `fk_environment_catalog1_idx` (`catalog_idcatalog1` ASC),
   CONSTRAINT `fk_environment_catalog1`
