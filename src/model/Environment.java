@@ -1,33 +1,30 @@
 package model;
 
-public class Environment {
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-	private String name;
-	private String descriptionEnvironment;
-	
-	public Environment(String name, String descriptionEnvironment) {
-		super();
-		this.name = name;
-		this.descriptionEnvironment = descriptionEnvironment;
-	}
+public class Environment extends Product {
 
-	public Environment(){
+	private List <Product> products = new ArrayList <Product>();
+	
+	public Environment(String name, double value, String description, Date manufacturingDate) {
+		super(name, value, description, manufacturingDate);
 	}
 	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void addProduct(Product product){
+		this.products.add(product);
 	}
 	
-	public String getDescriptionEnvironment(){
-		return descriptionEnvironment;
+	public void removeProduct(Product product){
+		this.products.remove(product);
 	}
 	
-	public void setDescriptionEnvironment(String descriptionEnvironment){
-		this.descriptionEnvironment = descriptionEnvironment;
+	public void printProduct(){
+		System.out.println("Ambiente Criado!!!");
+		for(Product product : this.products){
+			product.printProduct();
+		}
 	}
 
 }

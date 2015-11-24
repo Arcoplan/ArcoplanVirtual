@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Product {
+public abstract class Product {
 
 	private String name;
 	private double value;
@@ -16,9 +16,6 @@ public class Product {
 		this.value = value;
 		this.description = description;
 		this.manufacturingDate = manufacturingDate;
-	}
-
-	public Product(){
 	}
 	
 	public String getName() {
@@ -59,6 +56,11 @@ public class Product {
 
 	public void setID(String id) {
 		this.id = id;
+	}
+
+	public void printProduct()
+	{
+		
 	}
 	
 	
